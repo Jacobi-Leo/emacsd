@@ -118,6 +118,10 @@
 
   ;; projectile costs 7% startup time
 
+  ;; my own packages
+  (require 'init-auctex)
+  (require 'init-chinese-fonts-setup)
+
   ;; misc has some crucial tools I need immediately
   (require 'init-misc)
 

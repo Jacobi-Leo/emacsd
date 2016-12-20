@@ -65,13 +65,13 @@ But you may use safer HTTPS instead.")
 (if melpa-use-https-repo
     (setq package-archives
           '(;; uncomment below line if you need use GNU ELPA
-            ;; ("gnu" . "https://elpa.gnu.org/packages/")
+            ("gnu" . "https://elpa.gnu.org/packages/")
             ("my-js2-mode" . "https://raw.githubusercontent.com/redguardtoo/js2-mode/release/")
             ("melpa" . "https://melpa.org/packages/")
             ("melpa-stable" . "https://stable.melpa.org/packages/")))
   (setq package-archives
         '(;; uncomment below line if you need use GNU ELPA
-          ;; ("gnu" . "http://elpa.gnu.org/packages/")
+          ("gnu" . "http://elpa.gnu.org/packages/")
           ("my-js2-mode" . "http://raw.githubusercontent.com/redguardtoo/js2-mode/release/")
           ("melpa" . "http://melpa.org/packages/")
           ("melpa-stable" . "http://stable.melpa.org/packages/")))
@@ -109,16 +109,16 @@ PACKAGE is a symbol, VERSION is a vector as produced by `version-to-list', and
 ARCHIVE is the string name of the package archive.")
 
 (defadvice package--add-to-archive-contents
-  (around filter-packages (package archive) activate)
+    (around filter-packages (package archive) activate)
   "Add filtering of available packages using `package-filter-function', if non-nil."
   (when (or (null package-filter-function)
-      (funcall package-filter-function
-         (car package)
-         (funcall (if (fboundp 'package-desc-version)
-          'package--ac-desc-version
-        'package-desc-vers)
-            (cdr package))
-         archive))
+            (funcall package-filter-function
+                     (car package)
+                     (funcall (if (fboundp 'package-desc-version)
+                                  'package--ac-desc-version
+                                'package-desc-vers)
+                              (cdr package))
+                     archive))
     ad-do-it))
 
 ;; On-demand installation of packages
@@ -151,7 +151,7 @@ ARCHIVE is the string name of the package archive.")
 
 (require-package 'async)
 (require-package 'dash) ; required by string-edit
-; color-theme 6.6.1 in elpa is buggy
+                                        ; color-theme 6.6.1 in elpa is buggy
 (require-package 'color-theme)
 (require-package 'auto-compile)
 (require-package 'smex)
@@ -254,5 +254,7 @@ ARCHIVE is the string name of the package archive.")
 (require-package 'define-word)
 (require-package 'quack) ;; for scheme
 (require-package 'hydra)
+(require-package 'auctex)
+(require-package 'chinese-fonts-setup)
 
 (provide 'init-elpa)
