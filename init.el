@@ -14,6 +14,10 @@
 (setq emacs-load-start-time (current-time))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
+;; language environment setting
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
 ;;----------------------------------------------------------------------------
@@ -134,20 +138,20 @@
   ;; {{ idle require other stuff
   (setq idle-require-idle-delay 2)
   (setq idle-require-symbols '(init-misc-lazy
-                               init-which-func
-                               init-fonts
-                               init-hs-minor-mode
-                               init-writting
-                               init-pomodoro
-                               init-emacspeak
-                               init-artbollocks-mode
-                               init-semantic))
+				init-which-func
+				init-fonts
+				init-hs-minor-mode
+				init-writting
+				init-pomodoro
+				init-emacspeak
+				init-artbollocks-mode
+				init-semantic))
   (idle-require-mode 1) ;; starts loading
   ;; }}
 
   (when (require 'time-date nil t)
     (message "Emacs startup time: %d seconds."
-             (time-to-seconds (time-since emacs-load-start-time))))
+	     (time-to-seconds (time-since emacs-load-start-time))))
 
   ;; my personal setup, other major-mode specific setup need it.
   ;; It's dependent on init-site-lisp.el
@@ -162,3 +166,10 @@
 ;;; no-byte-compile: t
 ;;; End:
 (put 'erase-buffer 'disabled nil)
+
+;; Set default font
+(set-face-attribute 'default nil
+                    :family "Source Code Pro"
+                    :height 130
+                    :weight 'normal
+                    :width 'normal)

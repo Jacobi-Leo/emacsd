@@ -1,5 +1,6 @@
 (require 'cl)
 
+(add-to-list 'default-frame-alist '(font . "Source Code Pro" ))
 
 (defun font-name-replace-size (font-name new-size)
   (let ((parts (split-string font-name "-")))
